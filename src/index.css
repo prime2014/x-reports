@@ -15,8 +15,16 @@ code {
     monospace;
 }
 
+.action:hover {
+  color: lightblue;
+}
+
 .templateBody {
   padding: 0 40px;
+}
+
+.input-group {
+  margin-bottom: 20px;
 }
 
 .h2-typography {
