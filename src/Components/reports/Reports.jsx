@@ -1,4 +1,4 @@
-import React, { useRef, useState, useLayoutEffect } from 'react'; 
+import React, { useState, useLayoutEffect } from 'react'; 
 import { TabMenu } from 'primereact/tabmenu';
 import Navbar from '../../common/Navbar';
 import { Card } from 'primereact/card';
@@ -20,6 +20,8 @@ const DialogBox = (props) => {
     const setFilterValue = (event) => {
         setValue(event.target.value)
     }
+
+
 
     useLayoutEffect(()=>{
         let mynewdate = new Date(dateFrom).toISOString()
@@ -96,7 +98,7 @@ const DialogBox = (props) => {
 }
 
 
-const ZReport = (props) => {
+const XReport = (props) => {
 
     const [loading, setLoading] = useState(false)
 
@@ -106,7 +108,7 @@ const ZReport = (props) => {
             
             let z_report = await reportApi.generateZ();
             console.log(z_report)
-            const filename = "zreport.pdf";
+            const filename = "xreport.pdf";
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(z_report);
             link.download = filename;
@@ -127,15 +129,15 @@ const ZReport = (props) => {
     }
     return (
         <div className="card flex justify-content-center">
-            <Dialog header="Z Report" visible={props.visible} style={{ width: '50vw' }} onHide={() => props.displayZdialog()}>
-                <p>This action will generate the Z-Report of Today</p>
-                <Button loading={loading} onClick={getZReport} label='Print Z Report' style={{ width: "100%" }} />
+            <Dialog header="X Report" visible={props.visible} style={{ width: '50vw' }} onHide={() => props.displayZdialog()}>
+                <p>This action will generate the X-Report of Today</p>
+                <Button loading={loading} onClick={getZReport} label='Print X Report' style={{ width: "100%" }} />
             </Dialog>
         </div>
     )
 }
 
-const XReport = (props) => {
+const ZReport = (props) => {
 
     const [loading, setLoading] = useState(false)
 
@@ -145,7 +147,7 @@ const XReport = (props) => {
             
             let x_report = await reportApi.generateX();
             console.log(x_report)
-            const filename = "xreport.pdf";
+            const filename = "zreport.pdf";
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(x_report);
             link.download = filename;
@@ -166,9 +168,9 @@ const XReport = (props) => {
     }
     return (
         <div className="card flex justify-content-center">
-            <Dialog header="X Report" visible={props.visible} style={{ width: '50vw' }} onHide={() => props.displayXdialog()}>
-                <p>This action will close your current shift and generate the x report</p>
-                <Button loading={loading} onClick={getXReport} label='Print X Report' style={{ width: "100%" }} />
+            <Dialog header="Z Report" visible={props.visible} style={{ width: '50vw' }} onHide={() => props.displayXdialog()}>
+                <p>This action will close your current shift and generate the Z report</p>
+                <Button loading={loading} onClick={getXReport} label='Print Z Report' style={{ width: "100%" }} />
             </Dialog>
         </div>
     )
@@ -210,17 +212,18 @@ export default function Report() {
                     <TabMenu model={items} />
                 </div> */}
                 <div>
-                    <h1>Welcome First Assurance</h1>
+                    <h1>Welcome</h1>
+                    <p>Here is a list of reports to explore</p>
                 </div>
                 <div className="grid">
                     <DialogBox visible={visible} changeVisible={handleVisible} />
-                    <ZReport visible={zVisible} displayZdialog={displayZdialog}/>
-                    <XReport visible={xVisible} displayXdialog={displayXdialog} />
+                    <XReport visible={zVisible} displayZdialog={displayZdialog}/>
+                    <ZReport visible={xVisible} displayXdialog={displayXdialog} />
                     <div className="col-12 md:col-6 lg:col-3">
                         <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
                             <div className="flex justify-content-between mb-3">
                                 <div>
-                                    <span className="block text-500 font-medium mb-3">X-Reports</span>
+                                    <span className="block text-500 font-medium mb-3">Z-Reports</span>
                                     <div className="text-900 font-medium text-xl">152</div>
                                 </div>
                                 <div className="flex align-items-center justify-content-center bg-blue-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
@@ -235,7 +238,7 @@ export default function Report() {
                         <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
                             <div className="flex justify-content-between mb-3">
                                 <div>
-                                    <span className="block text-500 font-medium mb-3">Z-Reports</span>
+                                    <span className="block text-500 font-medium mb-3">X-Reports</span>
                                     <div className="text-900 font-medium text-xl">$2.100</div>
                                 </div>
                                 <div className="flex align-items-center justify-content-center bg-orange-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
