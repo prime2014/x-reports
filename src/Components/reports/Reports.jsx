@@ -1,4 +1,4 @@
-import React, { useRef, useState, useLayoutEffect } from 'react'; 
+import React, { useState, useLayoutEffect } from 'react'; 
 import { TabMenu } from 'primereact/tabmenu';
 import Navbar from '../../common/Navbar';
 import { Card } from 'primereact/card';
@@ -20,6 +20,8 @@ const DialogBox = (props) => {
     const setFilterValue = (event) => {
         setValue(event.target.value)
     }
+
+
 
     useLayoutEffect(()=>{
         let mynewdate = new Date(dateFrom).toISOString()
@@ -215,8 +217,8 @@ export default function Report() {
                 </div>
                 <div className="grid">
                     <DialogBox visible={visible} changeVisible={handleVisible} />
-                    <ZReport visible={zVisible} displayZdialog={displayZdialog}/>
-                    <XReport visible={xVisible} displayXdialog={displayXdialog} />
+                    <XReport visible={xVisible} displayXdialog={displayXdialog}/>
+                    <ZReport visible={zVisible} displayZdialog={displayZdialog} />
                     <div className="col-12 md:col-6 lg:col-3">
                         <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
                             <div className="flex justify-content-between mb-3">

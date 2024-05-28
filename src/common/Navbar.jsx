@@ -16,7 +16,6 @@ export default function Navbar(props) {
     const items = [
         {
             label: 'Reports Section',
-            icon: 'pi pi-home'
         },
     
     ];
