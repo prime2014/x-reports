@@ -128,7 +128,7 @@ const ZReport = (props) => {
     return (
         <div className="card flex justify-content-center">
             <Dialog header="Z Report" visible={props.visible} style={{ width: '50vw' }} onHide={() => props.displayZdialog()}>
-                <p>This action will generate the Z-Report of Today</p>
+                <p>This action will close your current shift and generate the z report</p>
                 <Button loading={loading} onClick={getZReport} label='Print Z Report' style={{ width: "100%" }} />
             </Dialog>
         </div>
@@ -167,7 +167,8 @@ const XReport = (props) => {
     return (
         <div className="card flex justify-content-center">
             <Dialog header="X Report" visible={props.visible} style={{ width: '50vw' }} onHide={() => props.displayXdialog()}>
-                <p>This action will close your current shift and generate the x report</p>
+                <p>This action will generate the X-Report of Today</p>
+                
                 <Button loading={loading} onClick={getXReport} label='Print X Report' style={{ width: "100%" }} />
             </Dialog>
         </div>
@@ -210,7 +211,7 @@ export default function Report() {
                     <TabMenu model={items} />
                 </div> */}
                 <div>
-                    <h1>Welcome First Assurance</h1>
+                    <h1>Welcome</h1>
                 </div>
                 <div className="grid">
                     <DialogBox visible={visible} changeVisible={handleVisible} />
@@ -221,7 +222,7 @@ export default function Report() {
                             <div className="flex justify-content-between mb-3">
                                 <div>
                                     <span className="block text-500 font-medium mb-3">X-Reports</span>
-                                    <div className="text-900 font-medium text-xl">152</div>
+                                    <div className="text-900 font-medium text-xl">Anytime Snapshots</div>
                                 </div>
                                 <div className="flex align-items-center justify-content-center bg-blue-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
                                     <i className="pi pi-chart-bar text-blue-500 text-xl"></i>
@@ -236,7 +237,7 @@ export default function Report() {
                             <div className="flex justify-content-between mb-3">
                                 <div>
                                     <span className="block text-500 font-medium mb-3">Z-Reports</span>
-                                    <div className="text-900 font-medium text-xl">$2.100</div>
+                                    <div className="text-900 font-medium text-xl">End of day</div>
                                 </div>
                                 <div className="flex align-items-center justify-content-center bg-orange-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
                                     <i className="pi pi-chart-line text-orange-500 text-xl"></i>
@@ -251,7 +252,7 @@ export default function Report() {
                             <div className="flex justify-content-between mb-3">
                                 <div>
                                     <span className="block text-500 font-medium mb-3">Periodical Reports</span>
-                                    <div className="text-900 font-medium text-xl">28441</div>
+                                    <div className="text-900 font-medium text-xl">Track by range</div>
                                 </div>
                                 <div className="flex align-items-center justify-content-center bg-cyan-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
                                     <i className="pi pi-history text-cyan-500 text-xl"></i>
@@ -266,7 +267,7 @@ export default function Report() {
                             <div className="flex justify-content-between mb-3">
                                 <div>
                                     <span className="block text-500 font-medium mb-3">Other Reports</span>
-                                    <div className="text-900 font-medium text-xl">152 Unread</div>
+                                    <div className="text-900 font-medium text-xl">Advanced</div>
                                 </div>
                                 <div className="flex align-items-center justify-content-center bg-purple-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
                                     <i className="pi pi-file text-purple-500 text-xl"></i>
