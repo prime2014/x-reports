@@ -3,6 +3,8 @@ import { Menubar } from 'primereact/menubar';
 import { InputText } from 'primereact/inputtext';
 import { Badge } from 'primereact/badge';
 import { Avatar } from 'primereact/avatar';  
+import IsaleLogo from "../images/isale_inverted.jpg";
+
 
 export default function Navbar(props) {
     const itemRenderer = (item) => (
@@ -20,16 +22,12 @@ export default function Navbar(props) {
     
     ];
 
-    const start = <img alt="logo" src="https://primefaces.org/cdn/primereact/images/logo.png" height="40" className="mr-2"></img>;
-    const end = (
-        <div className="flex align-items-center gap-2">
-            <InputText placeholder="Search" type="text" className="w-8rem sm:w-auto" />
-        </div>
-    );
+    const start = <img alt="logo" src={IsaleLogo} height="40" className="mr-2"></img>;
+    
 
     return (
         <div className="card">
-            <Menubar model={items} start={start} end={end} />
+            <Menubar model={items} start={start}  />
             <div>
                 {props.children}
             </div>

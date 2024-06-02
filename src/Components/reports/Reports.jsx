@@ -25,11 +25,11 @@ const DialogBox = (props) => {
 
     useLayoutEffect(()=>{
         let mynewdate = new Date(dateFrom).toISOString()
-        console.log(mynewdate)
+        
         let date_to = new Date(dateTo).toISOString()
 
         // date_to = intlDateObject.format(date_to)
-        console.log(date_to)
+        
     })
 
     const generatePeriodical = async () => {
@@ -37,7 +37,7 @@ const DialogBox = (props) => {
         try {
             
             let periodical = await reportApi.getPeriodicalReports(type, dateFrom, dateTo);
-            console.log(periodical)
+         
             const filename = "periodical.pdf";
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(periodical);
@@ -77,14 +77,14 @@ const DialogBox = (props) => {
                     <div className='input-group'>
                         <div>
                             <p>Date from:</p>  
-                            <Calendar style={{ width:"100%" }} local="en"  value={dateFrom} onChange={(e)=> setDateFrom(e.value)} dateFormat='yy-mm-dd' showTime hourFormat="24" showIcon/>
+                            <Calendar style={{ width:"100%" }} locale="en" maxDate={dateTo ? new Date(new Date(dateTo).setHours(-24)) : null}  value={dateFrom} hideOnDateTimeSelect showButtonBar onChange={(e)=> setDateFrom(e.value)} dateFormat='yy-mm-dd' showTime hourFormat="24" showIcon/>
                         </div>
                     </div>
 
                     <div className='input-group'>
                         <div>
                             <p>Date to:</p>  
-                            <Calendar style={{ width:"100%" }} locale='en'  value={dateTo} onChange={(e)=> setDateTo(e.value)} dateFormat='yy-mm-dd' showTime hourFormat="24" showIcon/>
+                            <Calendar style={{ width:"100%" }} locale='en' minDate={new Date(new Date(dateFrom).setHours(24))} showMinMaxRange  value={dateTo} hideOnDateTimeSelect showButtonBar onChange={(e)=> setDateTo(e.value)} dateFormat='yy-mm-dd' showTime hourFormat="24" showIcon/>
                         </div>
                     </div>
 
@@ -107,7 +107,7 @@ const ZReport = (props) => {
         try {
             
             let z_report = await reportApi.generateZ();
-            console.log(z_report)
+            
             const filename = "zreport.pdf";
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(z_report);
@@ -146,7 +146,7 @@ const XReport = (props) => {
         try {
             
             let x_report = await reportApi.generateX();
-            console.log(x_report)
+           
             const filename = "xreport.pdf";
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(x_report);
@@ -219,7 +219,7 @@ export default function Report() {
                     <DialogBox visible={visible} changeVisible={handleVisible} />
                     <XReport visible={xVisible} displayXdialog={displayXdialog}/>
                     <ZReport visible={zVisible} displayZdialog={displayZdialog} />
-                    <div className="col-12 md:col-6 lg:col-3">
+                    <div className="col-12 md:col-6 lg:col-4">
                         <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
                             <div className="flex justify-content-between mb-3">
                                 <div>
@@ -234,7 +234,7 @@ export default function Report() {
                             <span onClick={generateXReport} className="text-400 action" style={{ color:"lightblue", fontSize:"13px", cursor: "pointer" }}>Generate Report <span style={{ fontSize:"13px" }} className='pi pi-arrow-right'></span></span>
                         </div>
                     </div>
-                    <div className="col-12 md:col-6 lg:col-3">
+                    <div className="col-12 md:col-6 lg:col-4">
                         <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
                             <div className="flex justify-content-between mb-3">
                                 <div>
@@ -249,7 +249,7 @@ export default function Report() {
                             <span onClick={generateZReport} className="text-400 action" style={{ color:"lightblue", fontSize:"13px", cursor: "pointer" }}>Generate Report <span style={{ fontSize:"13px" }} className='pi pi-arrow-right'></span></span>
                         </div>
                     </div>
-                    <div className="col-12 md:col-6 lg:col-3">
+                    <div className="col-12 md:col-6 lg:col-4">
                         <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
                             <div className="flex justify-content-between mb-3">
                                 <div>
@@ -264,21 +264,7 @@ export default function Report() {
                             <span onClick={showDialog} className="text-400 action" style={{ color:"lightblue", fontSize:"13px", cursor: "pointer" }}>Generate Report <span style={{ fontSize:"13px" }} className='pi pi-arrow-right'></span></span>
                         </div>
                     </div>
-                    <div className="col-12 md:col-6 lg:col-3">
-                        <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
-                            <div className="flex justify-content-between mb-3">
-                                <div>
-                                    <span className="block text-500 font-medium mb-3">Other Reports</span>
-                                    <div className="text-900 font-medium text-xl">Advanced</div>
-                                </div>
-                                <div className="flex align-items-center justify-content-center bg-purple-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                                    <i className="pi pi-file text-purple-500 text-xl"></i>
-                                </div>
-                            </div>
-                            <span className="text-green-500 font-medium">85 </span>
-                            <span className="text-400">responded</span>
-                        </div>
-                    </div>
+                    
                 </div>
     
             </div>

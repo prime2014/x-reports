@@ -16,7 +16,7 @@ function getCookie(name) {
 
 const getPeriodicalReports = async (type, dateFrom, dateTo) => {
     let cookie = getCookie("access_token")
-    console.log(cookie)
+    
     try {
         let report = await fetch(process.env.REACT_APP_API_URL + "/zreport/periodical/pdf", {
             method: "POST",
@@ -30,18 +30,18 @@ const getPeriodicalReports = async (type, dateFrom, dateTo) => {
 
         if(report.ok) {
             const blob = await report.blob();
-            console.log(blob)
+            
             return blob;
         }
     } catch(error) {
-        console.log(error)
+        throw error;
     }
 }
 
 
 const generateZ = async () => {
     let cookie = getCookie("access_token")
-    console.log(cookie)
+  
     try {
         let report = await fetch(process.env.REACT_APP_API_URL + "/zreport/pdf", {
             method: "GET",
@@ -54,17 +54,18 @@ const generateZ = async () => {
 
         if (report.ok) {
             const blob = await report.blob();
-            console.log(blob)
+           
             return blob; 
         }
     } catch(error) {
-        console.log(error)
+
+        throw error;
     }
 }
 
 const generateX = async () => {
     let cookie = getCookie("access_token")
-    console.log(cookie)
+   
     try {
         let report = await fetch(process.env.REACT_APP_API_URL + "/xreport/pdf", {
             method: "GET",
@@ -77,11 +78,12 @@ const generateX = async () => {
 
         if (report.ok) {
             const blob = await report.blob();
-            console.log(blob)
+            
             return blob; 
         }
     } catch(error) {
-        console.log(error)
+     
+        throw error;
     }
 }
 
